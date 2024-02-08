@@ -3,16 +3,15 @@ Sendgrid Yii2 integration
 
 This extension allow the developer to use [Sendgrid](https://sendgrid.com/) as an email transport.
 
-
 [![Latest Stable Version](https://poser.pugx.org/pixelcreart/yii2-sendgrid/v/stable)](https://packagist.org/packages/pixelcreart/yii2-sendgrid)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=main)
+[![Code Coverage](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=main)
 [![License](https://poser.pugx.org/pixelcreart/yii2-sendgrid/license)](https://packagist.org/packages/pixelcreart/yii2-sendgrid)
 
 [![Latest Development Version](https://img.shields.io/badge/unstable-devel-yellowgreen.svg)](https://packagist.org/packages/pixelcreart/yii2-sendgrid)
-[![Build Status](https://travis-ci.org/pgaultier/yii2-sendgrid.svg?branch=devel)](https://travis-ci.org/pgaultier/yii2-sendgrid)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/quality-score.png?b=devel)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=devel)
-[![Code Coverage](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/coverage.png?b=devel)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=devel)
+[![Build Status](https://travis-ci.org/pgaultier/yii2-sendgrid.svg?branch=develop)](https://travis-ci.org/pgaultier/yii2-sendgrid)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=develop)
+[![Code Coverage](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=develop)
 
 Installation
 ------------
@@ -55,12 +54,11 @@ Yii::$app->mailer->compose('contact/html')
      ->setTemplateModel([
          'firstname' => $form->firstname,
          'lastname' => $form->lastname,
+     ])
      ->send();
-
 ```
 
 For further instructions refer to the [related section in the Yii Definitive Guide](http://www.yiiframework.com/doc-2.0/guide-tutorial-mailing.html)
-
 
 Running the tests
 -----------------
@@ -88,4 +86,4 @@ All code contributions - including those of people having commit access -
 must go through a pull request and approved by a core developer before being
 merged. This is to ensure proper review of all the code.
 
-Fork the project, create a [feature branch ](http://nvie.com/posts/a-successful-git-branching-model/), and send us a pull request.
+Fork the project, create a [feature branch](http://nvie.com/posts/a-successful-git-branching-model/), and send us a pull request.
