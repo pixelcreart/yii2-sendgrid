@@ -2,7 +2,7 @@
 /**
  * Mail.php
  *
- * PHP version 5.6+
+ * PHP version 8.1+
  *
  * @author Manuel Avelar <me@mavelar.com>
  * @copyright 2024 Manuel Avelar
@@ -14,12 +14,11 @@
 
 namespace pixelcreart\sendgrid;
 
-
-use SendGrid\Exception as SendGridException;
-use SendGrid\Email as SendGridMail;
-use SendGrid as SendGridClient;
+use InvalidArgumentException;
+use SendGrid;
+use SendGrid\Mail\Mail;
+use Throwable;
 use yii\base\InvalidConfigException;
-use yii\base\InvalidParamException;
 use yii\mail\BaseMailer;
 
 /**
@@ -73,22 +72,18 @@ class Mailer extends BaseMailer
             }
             $client = null;
             if ($this->token !== null) {
-                $client = new SendGridClient($this->token, $this->options);
-            } elseif(($this->user !== null) && ($this->password !== null)) {
-                $client = new SendGridClient($this->user, $this->password, $this->options);
+                $client = new SendGrid($this->token, $this->options);
             }
             if ($client === null) {
-                throw new InvalidParamException('Email transport must be configured');
+                throw new InvalidArgumentException('Email transport must be configured');
             }
-            $sendGridMail = new SendGridMail();
+            $sendGridMail = new Mail();
             $replyTo = $message->getReplyTo();
             if ($replyTo !== null) {
                 $sendGridMail->setReplyTo($replyTo);
             }
-            $sendGridMail->setFrom($message->getFrom());
-            if ($message->getFromName() !== null) {
-                $sendGridMail->setFromName($message->getFromName());
-            }
+            $sendGridMail->setFrom($message->getFrom(), $message->getFromName());
+            
             foreach($message->getTo() as $email => $name) {
                 $sendGridMail->addTo($email, $name);
             }
@@ -100,8 +95,9 @@ class Mailer extends BaseMailer
             }
             $sendGridMail->setSubject($message->getSubject());
             foreach($message->getHeaders() as $header) {
-                list($key, $value) = each($header);
-                $sendGridMail->addHeader($key, $value);
+                foreach($header as $key => $value) {
+                    $sendGridMail->addHeader($key, $value);
+                }
             }
             foreach($message->getAttachments() as $attachment) {
                 $cid = isset($attachment['ContentID']) ? $attachment['ContentID'] : null;
@@ -112,27 +108,27 @@ class Mailer extends BaseMailer
             if ($templateId === null) {
                 $data = $message->getHtmlBody();
                 if ($data !== null) {
-                    $sendGridMail->setHtml($data);
+                    $sendGridMail->addContent('text/html',$data);
                 }
                 $data = $message->getTextBody();
                 if ($data !== null) {
-                    $sendGridMail->setText($data);
+                    $sendGridMail->addContent('text/plain',$data);
                 }
             } else {
                 $sendGridMail->setTemplateId($templateId);
                 // trigger html template
-                $sendGridMail->setHtml(' ');
+                $sendGridMail->addContent('text/html',' ');
                 // trigger text template
-                $sendGridMail->setText(' ');
+                $sendGridMail->addContent('text/plain',' ');
                 $templateModel = $message->getTemplateModel();
-                if (empty($templateModel) === false) {
-                    $sendGridMail->setSubstitutions($message->getTemplateModel());
-                }
+                // if (empty($templateModel) === false) {
+                //     $sendGridMail->setSubstitutions($message->getTemplateModel());
+                // }
             }
             $result = $client->send($sendGridMail);
             /* @var \SendGrid\Response $result */
             return $result->code == 200;
-        } catch (SendGridException $e) {
+        } catch (Throwable $e) {
             throw $e;
         }
     }
