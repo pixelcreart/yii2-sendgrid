@@ -4,13 +4,13 @@ Sendgrid Yii2 integration
 This extension allow the developper to use [Sendgrid](https://sendgrid.com/) as an email transport.
 
 
-[![Latest Stable Version](https://poser.pugx.org/sweelix/yii2-sendgrid/v/stable)](https://packagist.org/packages/sweelix/yii2-sendgrid)
+[![Latest Stable Version](https://poser.pugx.org/pixelcreart/yii2-sendgrid/v/stable)](https://packagist.org/packages/pixelcreart/yii2-sendgrid)
 [![Build Status](https://api.travis-ci.org/pgaultier/yii2-sendgrid.svg?branch=master)](https://travis-ci.org/pgaultier/yii2-sendgrid)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=master)
-[![License](https://poser.pugx.org/sweelix/yii2-sendgrid/license)](https://packagist.org/packages/sweelix/yii2-sendgrid)
+[![License](https://poser.pugx.org/pixelcreart/yii2-sendgrid/license)](https://packagist.org/packages/pixelcreart/yii2-sendgrid)
 
-[![Latest Development Version](https://img.shields.io/badge/unstable-devel-yellowgreen.svg)](https://packagist.org/packages/sweelix/yii2-sendgrid)
+[![Latest Development Version](https://img.shields.io/badge/unstable-devel-yellowgreen.svg)](https://packagist.org/packages/pixelcreart/yii2-sendgrid)
 [![Build Status](https://travis-ci.org/pgaultier/yii2-sendgrid.svg?branch=devel)](https://travis-ci.org/pgaultier/yii2-sendgrid)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/quality-score.png?b=devel)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=devel)
 [![Code Coverage](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/coverage.png?b=devel)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=devel)
@@ -23,7 +23,7 @@ If you use Packagist for installing packages, then you can update your composer.
 ``` json
 {
     "require": {
-        "sweelix/yii2-sendgrid": "*"
+        "pixelcreart/yii2-sendgrid": "*"
     }
 }
 ```
@@ -38,7 +38,7 @@ return [
     //....
     'components' => [
         'mailer' => [
-            'class' => 'sweelix\sendgrid\Mailer',
+            'class' => 'pixelcreart\sendgrid\Mailer',
             'token' => '<your sendgrid token>',
         ],
     ],

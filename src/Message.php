@@ -4,15 +4,15 @@
  *
  * PHP version 5.6+
  *
- * @author Philippe Gaultier <pgaultier@sweelix.net>
- * @copyright 2010-2017 Philippe Gaultier
- * @license http://www.sweelix.net/license license
- * @version XXX
- * @link http://www.sweelix.net
- * @package sweelix\sendgrid
+ * @author Manuel Avelar <me@mavelar.com>
+ * @copyright 2024 Manuel Avelar
+ * @license http://www.pixelcreart.com/license license
+ * @version 1.0.0
+ * @link http://www.pixelcreart.com
+ * @package pixelcreart\sendgrid
  */
 
-namespace sweelix\sendgrid;
+namespace pixelcreart\sendgrid;
 
 
 use yii\base\InvalidConfigException;
@@ -26,13 +26,13 @@ use yii\mail\MailerInterface;
 /**
  * This component allow user to send an email
  *
- * @author Philippe Gaultier <pgaultier@sweelix.net>
- * @copyright 2010-2017 Philippe Gaultier
- * @license http://www.sweelix.net/license license
- * @version XXX
- * @link http://www.sweelix.net
- * @package sweelix\sendgrid
- * @since XXX
+ * @author Manuel Avelar <me@mavelar.com>
+ * @copyright 2024 Manuel Avelar
+ * @license http://www.pixelcreart.com/license license
+ * @version 1.0.0
+ * @link http://www.pixelcreart.com
+ * @package pixelcreart\sendgrid
+ * @since 1.0.0
  */
 class Message extends BaseMessage
 {
@@ -145,7 +145,7 @@ class Message extends BaseMessage
 
     /**
      * @return string|null extract and return the name associated with from
-     * @since XXX
+     * @since 1.0.0
      */
     public function getFromName()
     {
@@ -270,7 +270,7 @@ class Message extends BaseMessage
 
     /**
      * @return string|null text body of the message
-     * @since XXX
+     * @since 1.0.0
      */
     public function getTextBody()
     {
@@ -288,7 +288,7 @@ class Message extends BaseMessage
 
     /**
      * @return string|null html body of the message
-     * @since XXX
+     * @since 1.0.0
      */
     public function getHtmlBody()
     {
@@ -306,7 +306,7 @@ class Message extends BaseMessage
 
     /**
      * @return array list of unique arguments attached to the email
-     * @since XXX
+     * @since 1.0.0
      */
     public function getUniqueArguments()
     {
@@ -317,7 +317,7 @@ class Message extends BaseMessage
      * @param string $key key of the unique argument
      * @param string $value value of the unique argument which will be added to the mail
      * @return $this
-     * @since XXX
+     * @since 1.0.0
      */
     public function addUniqueArgument($key, $value)
     {
@@ -328,7 +328,7 @@ class Message extends BaseMessage
     /**
      * @param string $templateId template Id used. in this case, Subject / HtmlBody / TextBody are discarded
      * @return $this
-     * @since XXX
+     * @since 1.0.0
      */
     public function setTemplateId($templateId)
     {
@@ -338,7 +338,7 @@ class Message extends BaseMessage
 
     /**
      * @return string|null current templateId
-     * @since XXX
+     * @since 1.0.0
      */
     public function getTemplateId()
     {
@@ -348,7 +348,7 @@ class Message extends BaseMessage
     /**
      * @param array $templateModel model associated with the template
      * @return $this
-     * @since XXX
+     * @since 1.0.0
      */
     public function setTemplateModel($templateModel)
     {
@@ -358,7 +358,7 @@ class Message extends BaseMessage
 
     /**
      * @return array current template model
-     * @since XXX
+     * @since 1.0.0
      */
     public function getTemplateModel()
     {
@@ -375,7 +375,7 @@ class Message extends BaseMessage
 
     /**
      * @param array $header add custom header to the mail
-     * @since XXX
+     * @since 1.0.0
      */
     public function addHeader($header)
     {
@@ -384,7 +384,7 @@ class Message extends BaseMessage
 
     /**
      * @return array|null headers which should be added to the mail
-     * @since XXX
+     * @since 1.0.0
      */
     public function getHeaders()
     {
@@ -393,7 +393,7 @@ class Message extends BaseMessage
 
     /**
      * @return array|null list of attachments
-     * @since XXX
+     * @since 1.0.0
      */
     public function getAttachments()
     {
@@ -419,7 +419,7 @@ class Message extends BaseMessage
 
     /**
      * @return string temporary directory to store contents
-     * @since XXX
+     * @since 1.0.0
      * @throws InvalidConfigException
      */
     protected function getTempDir()
@@ -502,7 +502,7 @@ class Message extends BaseMessage
      * @param array|string $emailsData email can be defined as string. In this case no transformation is done
      *                                 or as an array ['email@test.com', 'email2@test.com' => 'Email 2']
      * @return string|null
-     * @since XXX
+     * @since 1.0.0
      */
     public static function stringifyEmails($emailsData)
     {

@@ -4,15 +4,15 @@
  *
  * PHP version 5.6+
  *
- * @author Philippe Gaultier <pgaultier@sweelix.net>
- * @copyright 2010-2017 Philippe Gaultier
- * @license http://www.sweelix.net/license license
- * @version XXX
- * @link http://www.sweelix.net
- * @package sweelix\sendgrid
+ * @author Manuel Avelar <me@mavelar.com>
+ * @copyright 2024 Manuel Avelar
+ * @license http://pixelcreart.com/license license
+ * @version 1.0.0
+ * @link http://www.pixelcreart.com
+ * @package pixelcreart\sendgrid
  */
 
-namespace sweelix\sendgrid;
+namespace pixelcreart\sendgrid;
 
 
 use SendGrid\Exception as SendGridException;
@@ -25,13 +25,13 @@ use yii\mail\BaseMailer;
 /**
  * This component allow user to send an email
  *
- * @author Philippe Gaultier <pgaultier@sweelix.net>
- * @copyright 2010-2017 Philippe Gaultier
- * @license http://www.sweelix.net/license license
- * @version XXX
- * @link http://www.sweelix.net
- * @package sweelix\sendgrid
- * @since XXX
+ * @author Manuel Avelar <me@mavelar.com>
+ * @copyright 2024 Manuel Avelar
+ * @license http://www.pixelcreart.com/license license
+ * @version 1.0.0
+ * @link http://www.pixelcreart.com
+ * @package pixelcreart\sendgrid
+ * @since 1.0.0
  * @todo implement batch messages using API
  */
 class Mailer extends BaseMailer
@@ -59,10 +59,10 @@ class Mailer extends BaseMailer
     /**
      * @inheritdoc
      */
-    public $messageClass = 'sweelix\sendgrid\Message';
+    public $messageClass = 'pixelcreart\sendgrid\Message';
     /**
      * @param Message $message
-     * @since XXX
+     * @since 1.0.0
      * @throws InvalidConfigException
      */
     public function sendMessage($message)
