@@ -7,17 +7,18 @@
  * @author Manuel Avelar <me@mavelar.com>
  * @copyright 2024 Manuel Avelar
  * @license http://pixelcreart.com/license license
- * @version 1.0.0
+ * @version 1.0.2
  * @link http://www.pixelcreart.com
  * @package pixelcreart\sendgrid
  */
 
 namespace pixelcreart\sendgrid;
 
+use Exception;
 use InvalidArgumentException;
 use SendGrid;
 use SendGrid\Mail\Mail;
-use Throwable;
+use Yii;
 use yii\base\InvalidConfigException;
 use yii\mail\BaseMailer;
 
@@ -27,7 +28,7 @@ use yii\mail\BaseMailer;
  * @author Manuel Avelar <me@mavelar.com>
  * @copyright 2024 Manuel Avelar
  * @license http://www.pixelcreart.com/license license
- * @version 1.0.0
+ * @version 1.0.2
  * @link http://www.pixelcreart.com
  * @package pixelcreart\sendgrid
  * @since 1.0.0
@@ -39,16 +40,6 @@ class Mailer extends BaseMailer
      * @var string Sendgrid API Key
      */
     public $token;
-
-    /**
-     * @var string Sendgrid login
-     */
-    public $user;
-
-    /**
-     * @var string Sendgrid password
-     */
-    public $password;
 
     /**
      * @var array options as defined in https://github.com/sendgrid/sendgrid-php#usage
@@ -67,7 +58,7 @@ class Mailer extends BaseMailer
     public function sendMessage($message)
     {
         try {
-            if (($this->token === null) && ($this->user === null && $this->password === null)) {
+            if (($this->token === null)) {
                 throw new InvalidConfigException('Token or login/password are missing');
             }
             $client = null;
@@ -120,15 +111,18 @@ class Mailer extends BaseMailer
                 $sendGridMail->addContent('text/html',' ');
                 // trigger text template
                 $sendGridMail->addContent('text/plain',' ');
-                $templateModel = $message->getTemplateModel();
+                // $templateModel = $message->getTemplateModel();
                 // if (empty($templateModel) === false) {
                 //     $sendGridMail->setSubstitutions($message->getTemplateModel());
                 // }
             }
+
             $result = $client->send($sendGridMail);
             /* @var \SendGrid\Response $result */
-            return $result->code == 200;
-        } catch (Throwable $e) {
+
+            return $result->statusCode();
+        } catch (Exception $e) {
+            Yii::error($e->getMessage(), __METHOD__);
             throw $e;
         }
     }

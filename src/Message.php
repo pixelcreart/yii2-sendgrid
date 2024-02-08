@@ -7,7 +7,7 @@
  * @author Manuel Avelar <me@mavelar.com>
  * @copyright 2024 Manuel Avelar
  * @license http://www.pixelcreart.com/license license
- * @version 1.0.0
+ * @version 1.0.2
  * @link http://www.pixelcreart.com
  * @package pixelcreart\sendgrid
  */
@@ -16,9 +16,8 @@ namespace pixelcreart\sendgrid;
 
 
 use yii\base\InvalidConfigException;
-use yii\base\InvalidParamException;
+use yii\base\InvalidArgumentException;
 use yii\base\NotSupportedException;
-use yii\helpers\ArrayHelper;
 use yii\mail\BaseMessage;
 use Yii;
 use yii\mail\MailerInterface;
@@ -29,7 +28,7 @@ use yii\mail\MailerInterface;
  * @author Manuel Avelar <me@mavelar.com>
  * @copyright 2024 Manuel Avelar
  * @license http://www.pixelcreart.com/license license
- * @version 1.0.0
+ * @version 1.0.2
  * @link http://www.pixelcreart.com
  * @package pixelcreart\sendgrid
  * @since 1.0.0
@@ -116,7 +115,7 @@ class Message extends BaseMessage
      */
     public function getCharset()
     {
-        throw new NotSupportedException();
+        return true;
     }
 
     /**
@@ -124,7 +123,7 @@ class Message extends BaseMessage
      */
     public function setCharset($charset)
     {
-        throw new NotSupportedException();
+        return true;
     }
 
     /**
@@ -134,12 +133,14 @@ class Message extends BaseMessage
     {
         $fromMail = null;
         reset($this->from);
-        list($email, $name) = each($this->from);
-        if (is_numeric($email) === true) {
-            $fromMail = $name;
-        } else {
-            $fromMail = $email;
+        foreach($this->from as $email => $name) {
+            if (is_numeric($email) === true) {
+                $fromMail = $name;
+            } else {
+                $fromMail = $email;
+            }
         }
+        
         return $fromMail;
     }
 
@@ -150,11 +151,12 @@ class Message extends BaseMessage
     public function getFromName()
     {
         reset($this->from);
-        list($email, $name) = each($this->from);
-        if (is_numeric($email) === false) {
-            return $name;
-        } else {
-            return null;
+        foreach($this->from as $email => $name) {
+            if (is_numeric($email) === false) {
+                return $name;
+            } else {
+                return null;
+            }
         }
     }
 
@@ -195,11 +197,12 @@ class Message extends BaseMessage
         $replyTo = null;
         if (is_array($this->replyTo) === true) {
             reset($this->replyTo);
-            list($email, $name) = each($this->replyTo);
-            if (is_numeric($email) === true) {
-                $replyTo = $name;
-            } else {
-                $replyTo = $email;
+            foreach($this->replyTo as $email => $name) {
+                if (is_numeric($email) === true) {
+                    $replyTo = $name;
+                } else {
+                    $replyTo = $email;
+                }
             }
         }
         return $replyTo;
@@ -444,7 +447,7 @@ class Message extends BaseMessage
     public function attachContent($content, array $options = [])
     {
         if (!isset($options['fileName']) || empty($options['fileName'])) {
-            throw new InvalidParamException('Filename is missing');
+            throw new InvalidArgumentException('Filename is missing');
         }
         $filePath = $this->getTempDir().'/'.$options['fileName'];
         if (file_put_contents($filePath, $content) === false) {
@@ -478,7 +481,7 @@ class Message extends BaseMessage
     public function embedContent($content, array $options = [])
     {
         if (isset($options['fileName']) === false || empty($options['fileName'])) {
-            throw new InvalidParamException('fileName is missing');
+            throw new InvalidArgumentException('fileName is missing');
         }
         $filePath = $this->getTempDir().'/'.$options['fileName'];
         if (file_put_contents($filePath, $content) === false) {

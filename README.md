@@ -1,11 +1,10 @@
 Sendgrid Yii2 integration
 =========================
 
-This extension allow the developper to use [Sendgrid](https://sendgrid.com/) as an email transport.
+This extension allow the developer to use [Sendgrid](https://sendgrid.com/) as an email transport.
 
 
 [![Latest Stable Version](https://poser.pugx.org/pixelcreart/yii2-sendgrid/v/stable)](https://packagist.org/packages/pixelcreart/yii2-sendgrid)
-[![Build Status](https://api.travis-ci.org/pgaultier/yii2-sendgrid.svg?branch=master)](https://travis-ci.org/pgaultier/yii2-sendgrid)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=master)
 [![License](https://poser.pugx.org/pixelcreart/yii2-sendgrid/license)](https://packagist.org/packages/pixelcreart/yii2-sendgrid)
