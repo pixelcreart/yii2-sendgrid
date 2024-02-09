@@ -10,3 +10,8 @@ First commit
 -------------------
 
 - Fix bug and update Sendgrid API to v7
+
+1.0.3 Feb 8, 2024
+-------------------
+
+- Fix bug and update Sendgrid API methods
