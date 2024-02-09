@@ -126,8 +126,20 @@ class Mailer extends BaseMailer
             return [
                 'success' => $result->statusCode()==202,
                 'statusCode' => $result->statusCode(),
-                'message' => json_decode($result->body()),
+                'body' => json_decode($result->body()),
                 'headers' => $result->headers(),
+                'params' => [
+                    'from' => $message->getFrom(),
+                    'to' => $message->getTo(),
+                    'cc' => $message->getCc(),
+                    'bcc' => $message->getBcc(),
+                    'subject' => $message->getSubject(),
+                    'replyTo' => $message->getReplyTo(),
+                    'templateId' => $message->getTemplateId(),
+                    'templateModel' => $message->getTemplateModel(),
+                    'attachments' => $message->getAttachments(),
+                    'headers' => $message->getHeaders(),
+                ],
             ];
         } catch (Exception $e) {
             Yii::error($e->getMessage(), __METHOD__);
