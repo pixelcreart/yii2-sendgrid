@@ -7,7 +7,7 @@
  * @author Manuel Avelar <me@mavelar.com>
  * @copyright 2024 Manuel Avelar
  * @license http://pixelcreart.com/license license
- * @version 1.0.2
+ * @version 1.0.0
  * @link http://www.pixelcreart.com
  * @package pixelcreart\sendgrid
  */
@@ -28,7 +28,7 @@ use yii\mail\BaseMailer;
  * @author Manuel Avelar <me@mavelar.com>
  * @copyright 2024 Manuel Avelar
  * @license http://www.pixelcreart.com/license license
- * @version 1.0.2
+ * @version 1.0.0
  * @link http://www.pixelcreart.com
  * @package pixelcreart\sendgrid
  * @since 1.0.0
@@ -96,6 +96,7 @@ class Mailer extends BaseMailer
             }
 
             $templateId = $message->getTemplateId();
+
             if ($templateId === null) {
                 $data = $message->getHtmlBody();
                 if ($data !== null) {
@@ -107,20 +108,27 @@ class Mailer extends BaseMailer
                 }
             } else {
                 $sendGridMail->setTemplateId($templateId);
+                
                 // trigger html template
                 $sendGridMail->addContent('text/html',' ');
                 // trigger text template
                 $sendGridMail->addContent('text/plain',' ');
-                // $templateModel = $message->getTemplateModel();
-                // if (empty($templateModel) === false) {
-                //     $sendGridMail->setSubstitutions($message->getTemplateModel());
-                // }
+                $templateModel = $message->getTemplateModel();
+
+                if (empty($templateModel) === false) {
+                    $sendGridMail->addDynamicTemplateDatas($templateModel);
+                }
             }
 
             $result = $client->send($sendGridMail);
             /* @var \SendGrid\Response $result */
 
-            return $result->statusCode();
+            return [
+                'success' => $result->statusCode()==202,
+                'statusCode' => $result->statusCode(),
+                'message' => json_decode($result->body()),
+                'headers' => $result->headers(),
+            ];
         } catch (Exception $e) {
             Yii::error($e->getMessage(), __METHOD__);
             throw $e;
