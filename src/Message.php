@@ -7,19 +7,17 @@
  * @author Manuel Avelar <me@mavelar.com>
  * @copyright 2024 Manuel Avelar
  * @license http://www.pixelcreart.com/license license
- * @version 1.0.2
+ * @version 1.0.0
  * @link http://www.pixelcreart.com
  * @package pixelcreart\sendgrid
  */
 
 namespace pixelcreart\sendgrid;
 
-
+use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\InvalidArgumentException;
-use yii\base\NotSupportedException;
 use yii\mail\BaseMessage;
-use Yii;
 use yii\mail\MailerInterface;
 
 /**
@@ -28,7 +26,7 @@ use yii\mail\MailerInterface;
  * @author Manuel Avelar <me@mavelar.com>
  * @copyright 2024 Manuel Avelar
  * @license http://www.pixelcreart.com/license license
- * @version 1.0.2
+ * @version 1.0.0
  * @link http://www.pixelcreart.com
  * @package pixelcreart\sendgrid
  * @since 1.0.0
@@ -365,15 +363,7 @@ class Message extends BaseMessage
      */
     public function getTemplateModel()
     {
-        $templateModel = [];
-        list($left, $right) = $this->substitutionsPairs;
-        foreach ($this->templateModel as $key => $value) {
-            if (is_array($value) === false) {
-                $value = [$value];
-            }
-            $templateModel[$left.$key.$right] = $value;
-        }
-        return $templateModel;
+        return !empty($this->templateModel) ? $this->templateModel : [];
     }
 
     /**
