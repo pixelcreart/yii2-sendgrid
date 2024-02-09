@@ -4,14 +4,14 @@ Sendgrid Yii2 integration
 This extension allow the developer to use [Sendgrid](https://sendgrid.com/) as an email transport.
 
 [![Latest Stable Version](https://poser.pugx.org/pixelcreart/yii2-sendgrid/v/stable)](https://packagist.org/packages/pixelcreart/yii2-sendgrid)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=main)
-[![Code Coverage](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=main)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pixelcreart/yii2-sendgrid/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/pixelcreart/yii2-sendgrid/?branch=main)
+[![Code Coverage](https://scrutinizer-ci.com/g/pixelcreart/yii2-sendgrid/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/pixelcreart/yii2-sendgrid/?branch=main)
 [![License](https://poser.pugx.org/pixelcreart/yii2-sendgrid/license)](https://packagist.org/packages/pixelcreart/yii2-sendgrid)
 
 [![Latest Development Version](https://img.shields.io/badge/unstable-devel-yellowgreen.svg)](https://packagist.org/packages/pixelcreart/yii2-sendgrid)
-[![Build Status](https://travis-ci.org/pgaultier/yii2-sendgrid.svg?branch=develop)](https://travis-ci.org/pgaultier/yii2-sendgrid)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=develop)
-[![Code Coverage](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/pgaultier/yii2-sendgrid/?branch=develop)
+[![Build Status](https://travis-ci.org/pixelcreart/yii2-sendgrid.svg?branch=develop)](https://travis-ci.org/pixelcreart/yii2-sendgrid)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pixelcreart/yii2-sendgrid/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/pixelcreart/yii2-sendgrid/?branch=develop)
+[![Code Coverage](https://scrutinizer-ci.com/g/pixelcreart/yii2-sendgrid/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/pixelcreart/yii2-sendgrid/?branch=develop)
 
 Installation
 ------------
